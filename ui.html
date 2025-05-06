@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Majestic RP HUB</title>
+  <meta name="viewport" content="width=900, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #36393f;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 140px;
+      background: #2f3136;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      gap: 10px;
+      box-shadow: 2px 0 8px #0002;
+    }
+    .sidebar button {
+      width: 110px;
+      height: 36px;
+      background: #23272a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .sidebar button:hover {
+      background: #5865f2;
+    }
+    .sidebar .save, .sidebar .coord {
+      margin-top: auto;
+      margin-bottom: 6px;
+      background: #5865f2;
+    }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 32px;
+      overflow-y: auto;
+    }
+    .row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .block {
+      background: #2f3136;
+      border-radius: 10px;
+      padding: 18px 20px;
+      min-width: 220px;
+      flex: 1;
+      box-shadow: 0 2px 8px #0002;
+    }
+    .block h2 {
+      font-size: 18px;
+      margin: 0 0 12px 0;
+      color: #fff;
+      font-weight: 600;
+    }
+    .block label, .block span, .block p {
+      color: #b9bbbe;
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .block input[type="radio"], .block input[type="checkbox"] {
+      accent-color: #5865f2;
+      margin-right: 6px;
+    }
+    .block .hotkey-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .block .hotkey-row span {
+      min-width: 90px;
+      color: #fff;
+      font-size: 13px;
+    }
+    .block .hotkey-row input {
+      width: 60px;
+      margin-right: 10px;
+      background: #40444b;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+    .discord-btn {
+      width: 100%;
+      background: #5865f2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      height: 36px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .discord-btn:hover {
+      background: #4752c4;
+    }
+    .chat {
+      background: #23272a;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      color: #dcddde;
+      font-size: 14px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .chat .msg {
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #36393f;
+    }
+    .chat .msg:last-child {
+      border-bottom: none;
+    }
+    .chat .author {
+      color: #00b0f4;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    .chat .date {
+      color: #72767d;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    .chat .content {
+      color: #dcddde;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <button>Помощь</button>
+      <button>Телепорты</button>
+      <button>Команды</button>
+      <button>Скилы</button>
+      <button>Инфо</button>
+      <button class="save">Сохранить</button>
+      <button class="coord">Изменить расположение счетчика</button>
+    </div>
+    <div class="main">
+      <div class="row">
+        <div class="block">
+          <h2>Горячие клавиши</h2>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Открыть репорты</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Удалить транспорт</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>GM</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>ТП к игроку</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Быстрый репорт</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Быстрый ответ</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Вкл/Выкл /dl</span></div>
+          <div class="hotkey-row"><input type="text" value="Ctrl + M"><span>ТП на метку</span></div>
+          <div class="hotkey-row"><input type="text" value="Ctrl + G"><span>ТП авто к себе</span></div>
+          <div class="hotkey-row"><input type="text" value="Alt + 1"><span>Добавить +1 репорт</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Убить игрока</span></div>
+          <div class="hotkey-row"><input type="text" value="Ctrl + R"><span>Воскресить игрока</span></div>
+          <div class="hotkey-row"><input type="text" value="Нет"><span>Телепорт игрока к себе</span></div>
+          <div class="hotkey-row"><input type="text" value="Ctrl + 2"><span>Памятка</span></div>
+        </div>
+        <div class="block">
+          <h2>Настройки</h2>
+          <label>Разрешение экрана:</label>
+          <div><input type="radio" name="res" checked> 1920x1080</div>
+          <div><input type="radio" name="res"> 1600x900</div>
+          <div><input type="radio" name="res"> 2554x1411</div>
+          <div><input type="radio" name="res"> 1440x900</div>
+          <div><input type="radio" name="res"> 1680x1050</div>
+          <div><input type="radio" name="res"> 1366x768</div>
+          <div><input type="radio" name="res"> 2560x1440</div>
+          <div><input type="radio" name="res"> 1280x1024</div>
+          <label style="margin-top:10px;">Ваш пол:</label>
+          <div><input type="radio" name="gender" checked> Мужской</div>
+          <div><input type="radio" name="gender"> Женский</div>
+        </div>
+        <div class="block">
+          <h2>Персонализация</h2>
+          <button class="discord-btn">Ваш дискорд</button>
+          <button class="discord-btn">Дискорд ГА</button>
+          <button class="discord-btn">Дискорд зГА</button>
+          <div class="chat">
+            <div class="msg">
+              <span class="author">Las Vegas | horrorking</span>
+              <span class="date">09.06.2024 20:32</span>
+              <div class="content">@Las Vegas 5 минут на исправление ситуации с репортами<br>далее – смешная нарезка детей 😁<br> <span style="color:#ffd700;">★ 2</span></div>
+            </div>
+            <div class="msg">
+              <span class="author">Las Vegas | horrorking</span>
+              <span class="date">01.06.2024 15:21</span>
+              <div class="content">@Las Vegas Если кто-то еще раз напишет с просьбой выдать уровень – получите минус один лвл на неделю минимум<br> <span style="color:#ffd700;">★ 10</span> <span style="color:#ffd700;">★ 5</span></div>
+            </div>
+            <div class="msg">
+              <span class="author">LV | sincerity</span>
+              <span class="date">11.11.2024 18:20</span>
+              <div class="content">Боритесь не с тем, кто приходит на проект играть, а с теми, кто намеренно отчисляет игроков, дабы они ливнули</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 
